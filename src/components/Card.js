@@ -9,7 +9,7 @@ let priceOptions=Object.keys(options);
     <div>
       <div>
       <div className="card mt-4" style={{"width": "18rem","maxHeight":"360px"}}>
-  <img src={food.img} className="card-img-top" alt="..." />
+  <img src={food.img} className="card-img-top" alt="..." style={{height:"200px",objectFit:"fill"}} />
   <div className="card-body">
     <h5 className="card-title">{food.name}</h5>
     <div className="container w-100">
