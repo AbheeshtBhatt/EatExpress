@@ -1,27 +1,35 @@
 import React from 'react'
 
-function Card() {
+function Card({food}) {
+
+let options=food.options[0];
+let priceOptions=Object.keys(options);
+
   return (
     <div>
       <div>
       <div className="card mt-4" style={{"width": "18rem","maxHeight":"360px"}}>
-  <img src="..." className="card-img-top" alt="..." />
+  <img src={food.img} className="card-img-top" alt="..." />
   <div className="card-body">
-    <h5 className="card-title">Card title</h5>
-    <p className="card-text">Card</p>
+    <h5 className="card-title">{food.name}</h5>
     <div className="container w-100">
         <select  className="m-2 h-100  bg-info">
          {
             Array.from(Array(6),(e,i)=>{
                 return (
-                    <option key={i+1} value={i+1}>{i+1}</option>
+                    <option key={i+1} value={i+1}>{food.option}</option>
                 )
             })
          }
         </select>
         <select  className="m-2 h-100  bg-info">
-            <option value="half">Half</option>
-            <option value="full">Full</option>
+            {
+              priceOptions.map((data)=>{
+                return (
+                  <option key={data} value={data}>{data}</option>
+                )
+              })
+            }
         </select>
     </div>
   </div>
