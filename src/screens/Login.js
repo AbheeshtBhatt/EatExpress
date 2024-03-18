@@ -21,7 +21,11 @@ const navigate=useNavigate();
   const json=await response.json();
   console.log(json);
   if(!json.success)alert('Invalid credentials!! Please enter valid credentials');
-  if(json.success)navigate("/");
+  if(json.success){
+    localStorage.setItem("authToken",json.authToken);
+    console.log(localStorage.getItem("authToken"));
+    navigate("/");
+  }
   }
   
   const onChange=(e)=>{
