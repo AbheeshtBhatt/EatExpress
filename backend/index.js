@@ -2,6 +2,7 @@ const express=require('express');
 const app=express();
 const port=5000;
 const mongoDB=require('./db')
+require('dotenv').config()
 
 mongoDB();
 
@@ -21,6 +22,6 @@ app.use("/api",require("./Routes/OrderData"));
 app.get('/',(req,res)=>{
     res.send('Hello!');
 })
-app.listen(port,()=>{
+app.listen(process.env.PORT,()=>{
     console.log(`listening on port ${port}`);
 })

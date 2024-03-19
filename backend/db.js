@@ -1,5 +1,6 @@
 const mongoose=require('mongoose')
-const mongoURI='mongodb+srv://eatExpress:eatExpress@cluster0.prrulch.mongodb.net/EatExpress?retryWrites=true&w=majority&appName=Cluster0';
+require('dotenv').config()
+const mongoURI=process.env.mongoURI
 
 const mongoDB = async () => {
     try {
