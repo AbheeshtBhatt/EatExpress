@@ -20,8 +20,25 @@ setSize(priceRef.current.value)
 
 
 const handleAddToCart=async()=>{
-  await dispatch({type:"ADD",id:food._id,name:food.name,price:finalPrice,qty:qty,size:size,image:food.img})
-console.log(data);
+let f=[];
+for(const item of data){
+  if(item.id===food._id){
+    f=item;
+    break;
+  }
+}
+if(f!==[]){
+  if(f.size===size){
+    await dispatch({type:"UPDATE",id:food._id,price:finalPrice,qty:qty});
+    return;
+  }
+  else if(f.size!==size){
+    await dispatch({type:"ADD",id:food._id,name:food.name,price:finalPrice,qty:qty,size:size,image:food.img})
+  return;
+  }
+  return;
+}
+await dispatch({type:"ADD",id:food._id,name:food.name,price:finalPrice,qty:qty,size:size,image:food.img})
 }
 
   return (

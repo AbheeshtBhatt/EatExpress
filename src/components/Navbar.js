@@ -1,7 +1,14 @@
-import React from 'react'
+import React, { useState } from 'react'
+import { Badge } from 'react-bootstrap';
 import { Link, useNavigate } from 'react-router-dom'
+import Modal from '../Modal';
+import Cart from '../screens/Cart';
+import { useCart } from './ContextReducer';
+
 
 function Navbar() {
+  const [cartView,setCartView]=useState(false);
+  let data=useCart();
 
   const navigate=useNavigate();
 
@@ -41,9 +48,11 @@ const handleLogout=()=>{
   </div>
       :
       <div>
-      <div className='btn bg-white text-black mx-1'>
-       My Cart
+      <div className='btn bg-white text-black mx-1' onClick={()=>setCartView(true)}>
+       My Cart {"  "}
+       <Badge pill bg='success' >{data.length}</Badge>
       </div>
+      {cartView?<Modal onClose={()=>setCartView(false)}><Cart/></Modal>:null}
       <div className='btn bg-white text-danger mx-1' onClick={handleLogout}>
         Logout
       </div>
