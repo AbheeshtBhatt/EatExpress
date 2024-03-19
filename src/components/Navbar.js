@@ -26,14 +26,14 @@ const handleLogout=()=>{
       <span className="navbar-toggler-icon"></span>
     </button>
     <div className="collapse navbar-collapse" id="navbarNav">
-      <ul className="navbar-nav me-auto mb-2">
+      <ul className="navbar-nav me-auto mb-1">
         <li className="nav-item">
           <Link className="nav-link active fs-5" aria-current="page" to="/">Home</Link>
         </li>
         {
           localStorage.getItem("authToken")?
           <li className="nav-item">
-          <Link className="nav-link active fs-5" aria-current="page" to="/">My orders</Link>
+          <Link className="nav-link active fs-5" aria-current="page" to="/myOrder">My orders</Link>
         </li>
         :""}
       </ul>

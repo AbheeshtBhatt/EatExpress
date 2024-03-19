@@ -42,41 +42,42 @@ await dispatch({type:"ADD",id:food._id,name:food.name,price:finalPrice,qty:qty,s
 }
 
   return (
+ 
     <div>
-      <div>
-      <div className="card mt-4" style={{"width": "18rem","maxHeight":"360px"}}>
-  <img src={food.img} className="card-img-top" alt="..." style={{height:"200px",objectFit:"fill"}} />
-  <div className="card-body">
-    <h5 className="card-title">{food.name}</h5>
-    <div className="container w-100">
-        <select  className="m-2 h-100  bg-info" onChange={(e)=>setQty(e.target.value)}>
-         {
-            Array.from(Array(6),(e,i)=>{
-                return (
-                    <option key={i+1} value={i+1}>{i+1}</option>
-                )
+    <div>
+    <div className="card mt-4" style={{"width": "18rem","maxHeight":"400px"}}>
+<img src={food.img} className="card-img-top" alt="..." style={{height:"200px",objectFit:"fill"}} />
+<div className="card-body">
+  <h5 className="card-title">{food.name}</h5>
+  <div className="container w-100">
+      <select  className="m-2 h-100  bg-primary" onChange={(e)=>setQty(e.target.value)}>
+       {
+          Array.from(Array(6),(e,i)=>{
+              return (
+                  <option key={i+1} value={i+1}>{i+1}</option>
+              )
+          })
+       }
+      </select>
+      <select  className="m-2 h-100  bg-primary" ref={priceRef} onChange={(e)=>setSize(e.target.value)}>
+          {
+            priceOptions.map((data)=>{
+              return (
+                <option key={data} value={data}>{data}</option>
+              )
             })
-         }
-        </select>
-        <select  className="m-2 h-100  bg-info" ref={priceRef} onChange={(e)=>setSize(e.target.value)}>
-            {
-              priceOptions.map((data)=>{
-                return (
-                  <option key={data} value={data}>{data}</option>
-                )
-              })
-            }
-        </select>
-        <div className='d-inline h-100 fs-5'> 
-          Rs.{finalPrice}/-
-        </div>
-    </div>
-    <hr />
-    <button className='btn btn-primary justify-center ms-2' onClick={handleAddToCart}>Add To Cart</button>
-  </div>
-</div>
+          }
+      </select>
+      <div className='d-inline h-100 fs-5'> 
+        Rs.{finalPrice}/-
       </div>
+  </div>
+  <hr />
+  <button className='btn btn-primary justify-center ms-2' onClick={handleAddToCart}>Add To Cart</button>
+</div>
+</div>
     </div>
+  </div>
   )
 }
 

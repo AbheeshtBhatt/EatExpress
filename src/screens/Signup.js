@@ -1,5 +1,7 @@
 import React, { useState } from 'react'
 import { Link, useNavigate } from 'react-router-dom'
+import Navbar from '../components/Navbar';
+
 
 export default function Signup() {
   const navigate=useNavigate();
@@ -20,9 +22,8 @@ const response=await fetch("http://localhost:5000/api/createuser",{
     })
 })
 const json=await response.json();
-console.log(json);
 if(!json.success)alert('Invalid credentials!! Please enter valid credentials');
-navigate("/");
+navigate("/login");
 }
 
 const onChange=(e)=>{
@@ -30,8 +31,12 @@ const onChange=(e)=>{
 }
 
   return (
-    <>
-<div className="container">
+    <div >
+    <div>
+    <Navbar />
+    </div>
+
+<div className="card container mt-5 justify-content-center align-items-center " style={{ backgroundImage: 'url("https://images.pexels.com/photos/1565982/pexels-photo-1565982.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=1")', backgroundSize: 'cover',height: '80vh' }}>
 <form onSubmit={handleSubmit}>
 <div className="mb-3">
     <label htmlFor="name" className="form-label">Username</label>
@@ -55,6 +60,6 @@ const onChange=(e)=>{
   <Link to='/login' className="m-3 btn btn-danger">Already a User</Link>
 </form>
 </div>
-    </>
+    </div>
   )
 }
